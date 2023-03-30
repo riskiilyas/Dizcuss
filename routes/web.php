@@ -17,21 +17,21 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/disscussion', function () {
+Route::get('/discussion', function () {
 
-    return view('homepage');
+    return view('discussion');
 });
 
 Route::get('/login', function () {
-    return view('homepage');
+    return view('login');
 });
 
 Route::get('/register', function () {
-    return view('homepage');
+    return view('register');
 });
 
 Route::get('/change_password', function () {
-    return view('homepage');
+    return view('change_password');
 });
 
 
