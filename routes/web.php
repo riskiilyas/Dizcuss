@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SessionController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,25 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-
-Route::get('/discussion', function () {
-
-    return view('discussion');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::get('/change_password', function () {
-    return view('change_password');
-});
-
-
+Route::get('/', [SessionController::class, 'login']);
+Route::get('/register', [SessionController::class, 'register']);
+Route::post('/register', [SessionController::class, 'store']);
+Route::get('/login', [SessionController::class, 'login']);
+Route::post('/login', [SessionController::class, 'login_action']);

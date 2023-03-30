@@ -33,30 +33,32 @@
     <!-- Custom styles for this template -->
     <link href="/styles/login.css" rel="stylesheet">
 </head>
+
 <body class="text-center">
 
 <main class="form-signin">
-    <form>
+    <form action="/register" method="POST">
+        @csrf
         <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Example123">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Example123" name="username">
             <label for="floatingInput">Username</label>
         </div>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Example123">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Example123" name="fullname">
             <label for="floatingInput">Fullname</label>
         </div>
 
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
             <label for="floatingInput">Email address</label>
         </div>
 
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
             <label for="floatingPassword">Password</label>
         </div>
 
