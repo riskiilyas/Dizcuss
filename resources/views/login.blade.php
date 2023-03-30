@@ -29,14 +29,14 @@
         }
     </style>
 
-
     <!-- Custom styles for this template -->
     <link href="/styles/login.css" rel="stylesheet">
 </head>
 <body class="text-center">
 
 <main class="form-signin">
-    <form>
+    <form method="POST" action="/login">
+        @csrf
         <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -62,8 +62,5 @@
         <p class="mt-5 mb-3 text-muted">&copy; 2023 Dizcuss</p>
     </form>
 </main>
-
-
-
 </body>
 </html>
