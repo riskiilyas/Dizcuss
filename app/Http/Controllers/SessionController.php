@@ -43,7 +43,7 @@ class SessionController extends Controller
             'password' => 'required',
         ]);
 
-        if(Auth::attempt($credentials)) {
+        if(Auth::attempt($credentials, $request->input('remember'))) {
             $request->session()->regenerate();
             return redirect()->intended();
         }
@@ -80,7 +80,7 @@ class SessionController extends Controller
 
     public function store(Request $request) {
         $validatedData = $request->validate([
-            'username' => 'required|max:20',
+            'username' => 'required|unique:users|max:20',
             'fullname' => 'required|max:50',
             'email' => 'required|unique:users|max:50',
             'password' => 'required|max:20',
@@ -88,7 +88,7 @@ class SessionController extends Controller
         $validatedData['password'] = bcrypt($request['password']);
 
         $user = new User();
-        $user->name = $validatedData['username'];
+        $user->username = $validatedData['username'];
         $user->fullname = $validatedData['fullname'];
         $user->email = $validatedData['email'];
         $user->password = $validatedData['password'];
