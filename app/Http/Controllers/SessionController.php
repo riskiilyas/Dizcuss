@@ -6,9 +6,21 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
+//    public function __construct() {
+//        $this->middleware('guest')->except('logout');
+//    }
+
+    function index() {
+        if (Auth::check()) {
+            return view('homepage');
+        }
+        return view('login');
+    }
+
     function login() {
         return view('login');
     }
@@ -18,16 +30,20 @@ class SessionController extends Controller
     }
 
     public function login_action(Request $request) {
-        $infologin = [
-            'email' => session('email'),
-            'password' => session('password'),
-        ];
+        $credentials = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required',
+        ]);
 
-        if(Auth::attempt($infologin)) {
-            return redirect()->action([HomeController::class, 'home'])->with('success', 'Register Success! Please continune to Login.');
-        } else {
-            return redirect()->action([SessionController::class, 'login'])->with('success', 'Register Success! Please continune to Login.');
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended();
         }
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+
     }
 
     public function store(Request $request) {
@@ -37,9 +53,10 @@ class SessionController extends Controller
             'email' => 'required|unique:users|max:50',
             'password' => 'required|max:20',
         ]);
+        $validatedData['password'] = bcrypt($request['password']);
 
         $user = new User();
-        $user->username = $validatedData['username'];
+        $user->name = $validatedData['username'];
         $user->fullname = $validatedData['fullname'];
         $user->email = $validatedData['email'];
         $user->password = $validatedData['password'];
@@ -50,6 +67,4 @@ class SessionController extends Controller
             return redirect()->action([SessionController::class, 'register'])->withError('Email or Username is Already Reigstered!');
         }
     }
-
-
 }
