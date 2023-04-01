@@ -21,6 +21,14 @@ class SessionController extends Controller
         return view('login');
     }
 
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return redirect()->action([SessionController::class, 'login']);
+    }
+
     function login() {
         return view('login');
     }
@@ -37,13 +45,11 @@ class SessionController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
             return redirect()->intended();
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
-
     }
 
     public function change_password(Request $request) {
