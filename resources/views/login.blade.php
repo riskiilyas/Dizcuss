@@ -65,8 +65,8 @@
             <p>Didn't have account? <a href="/register">Sign up</a></p>
 
             <div class="checkbox mb-3 mx-auto">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                <label for="remember">
+                    <input type="checkbox" name="remember" value="1"> Remember me
                 </label>
             </div>
 

@@ -43,7 +43,7 @@ class SessionController extends Controller
             'password' => 'required',
         ]);
 
-        if(Auth::attempt($credentials)) {
+        if(Auth::attempt($credentials, $request->input('remember'))) {
             $request->session()->regenerate();
             return redirect()->intended();
         }
