@@ -20,3 +20,4 @@ Route::get('/register', [SessionController::class, 'register']);
 Route::post('/register', [SessionController::class, 'store']);
 Route::get('/login', [SessionController::class, 'login']);
 Route::post('/login', [SessionController::class, 'login_action']);
+Route::post('/change_password', [SessionController::class, 'change_password']);
