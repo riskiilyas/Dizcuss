@@ -20,4 +20,14 @@ Route::get('/register', [SessionController::class, 'register']);
 Route::post('/register', [SessionController::class, 'store']);
 Route::get('/login', [SessionController::class, 'login']);
 Route::post('/login', [SessionController::class, 'login_action']);
+Route::get('/logout', [SessionController::class, 'logout']);
 Route::post('/change_password', [SessionController::class, 'change_password']);
+Route::get('/change_password', function () {
+    return view('change_password');
+});
+Route::get('/users', function () {
+    return view('users');
+});
+Route::get('/profile', function () {
+    return view('users');
+});

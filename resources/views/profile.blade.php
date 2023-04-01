@@ -41,7 +41,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top"
-                style="margin-right: 1rem">
+                     style="margin-right: 1rem">
                 Dizcuzz
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
                             Profile
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/profile">View Profile</a></li>
+                            <li><a class="dropdown-item" href="#">View Profile</a></li>
                             <li><a class="dropdown-item" href="/change_password">Change Password</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
