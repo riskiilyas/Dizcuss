@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,38 +37,53 @@
 
 <body class="text-center">
 
-<main class="form-signin">
-    <form action="/register" method="POST">
-        @csrf
-        <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+    <main class="form-signin">
+        <form action="/register" method="POST">
+            @csrf
+            <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
 
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Example123" name="username">
-            <label for="floatingInput">Username</label>
-        </div>
+            <div class="form-floating">
+                <input type="text" class="form-control @error('username') is-invalid @enderror" id="floatingInput" placeholder="Example123" name="username">
+                <label for="floatingInput">Username</label>
+            </div>
+            @error('username')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Example123" name="fullname">
-            <label for="floatingInput">Fullname</label>
-        </div>
+            <div class="form-floating">
+                <input type="text" class="form-control @error('fullname') is-invalid @enderror" id="floatingInput" placeholder="Example123" name="fullname">
+                <label for="floatingInput">Fullname</label>
+            </div>
+            @error('fullname')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 
-        <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-            <label for="floatingInput">Email address</label>
-        </div>
+            <div class="form-floating">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" name="email">
+                <label for="floatingInput">Email address</label>
+            </div>
 
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-            <label for="floatingPassword">Password</label>
-        </div>
+            @error('email')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
 
-        <p>Already have account? <a href="/login">Sign in</a></p>
+            <div class="form-floating">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+            </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2023 Dizcuss</p>
-    </form>
-</main>
+            @error('password')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
+            <p>Already have account? <a href="/login">Sign in</a></p>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2023 Dizcuss</p>
+        </form>
+    </main>
 
 </body>
+
 </html>

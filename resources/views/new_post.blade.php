@@ -41,7 +41,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
@@ -80,37 +80,28 @@
                 </div>
             </div>
         </nav>
-        @foreach (App\Models\Discussion::all() as $d)
-            <main class="discussion-title-content">
-                <div class="author-information">
-                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                    {{App\Models\User::find($d->user_id)->username}}
-                </div>
-                <a href="#">
-                    <h1>
-                        {{$d->title}}
-                    </h1>
-                </a>
-                <p>
-                    {{$d->description}}
-                </p>
-                <hr>
-                <div class="comment">
-                    <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo"> 0 Comments </a>
-                </div>
-                <div class="upvote">
-                    <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
-                </div>
-                <div class="downvote">
-                    <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
-                </div>
-                <div class="favorite">
-                    <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
-                </div>
-            </main>
-        @endforeach
-</section>
-<br>
+        <main class="discussion-title-content">
+            <h1 class="mb-5 mt-2">
+                Create a New Discussion
+            </h1>
+            <div class="create-discussion">
+                <form action="/new_post" method="post" class="form">
+                    @csrf
+                    <textarea name="title" cols="50" rows="1" class="discussion-ttl mb-3" placeholder="Title" style="resize:none;"></textarea>
+                    <textarea name="description" cols="100" rows="10" class="discussion-details mb-3" placeholder="Discussion" style="resize:none;"></textarea>
+                    <br>
+                    <button type="submit" class="post-button">Post New Discussion</button>
+                </form>
 
-<br>
+                <div>
+                    <hr>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </main>
+    </section>
+    <br>
+
+    <br>
 </body>
