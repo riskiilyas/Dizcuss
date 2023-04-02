@@ -35,23 +35,21 @@
 </head>
 
 <body class="text-center">
-
     <main class="form-signin">
-        @if(session('success'))
-            <div class="alert alert-success" role="alert">
-                Account Successfully created! Login now.
-            </div>
-        @endif
+        <form method="POST" action="/login">
+            @csrf
+            <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
             @if(session('failed'))
                 <div class="alert alert-danger" role="alert">
                     Wrong Password or Email!
                 </div>
             @endif
-        <form method="POST" action="/login">
-            @csrf
-            <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
             <div class="form-floating">
                 <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{Session::get('email')}}" id="floatingInput" placeholder="name@example.com" name="email">
                 <label for="floatingInput">Email address</label>

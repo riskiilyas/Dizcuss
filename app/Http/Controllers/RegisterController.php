@@ -27,9 +27,10 @@ class RegisterController extends Controller
         $user->password = $validatedData['password'];
 
         if($user->save()) {
-            return redirect()->action([SessionController::class, 'login'])->with('success');
+            session()->flash('success', 'You have Successfully Registered!');
+            return redirect()->action([SessionController::class, 'login'])->withSuccess('You have Successfully Registered! Please login');
         } else {
-            return redirect()->action([SessionController::class, 'register'])->with('failed');
+            return redirect()->action([SessionController::class, 'register'])->withError('Wrong Password or Email!');
         }
     }
 }
