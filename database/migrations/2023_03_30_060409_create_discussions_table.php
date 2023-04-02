@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('discussions', function (Blueprint $table) {
             $table->id();
             $table->timestamp('created_at');
-            $table->string('title');
-            $table->text('description');
+            $table->timestamp('updated_at')->nullable();
+            $table->string('title')->default('');
+            $table->text('description')->default('');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
