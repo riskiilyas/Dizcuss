@@ -86,7 +86,7 @@
                     <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
                     {{App\Models\User::find($d->user_id)->username}}
                 </div>
-                <a href="#">
+                <a href="/discussion/{{$d->id}}">
                     <h1>
                         {{$d->title}}
                     </h1>
@@ -96,7 +96,9 @@
                 </p>
                 <hr>
                 <div class="comment">
-                    <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo"> 0 Comments </a>
+                    <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
+                        {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
+                    </a>
                 </div>
                 <div class="upvote">
                     <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>

@@ -33,4 +33,7 @@ Route::get('/change_password', [ChangePasswordController::class, 'index']);
 Route::get('/users', [UsersController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/new_post', [DiscussionsController::class, 'create'])->name('create_post');
+Route::get('/discussion/{id}', [DiscussionsController::class, 'index']);
+Route::get('/user/{id}', [ProfileController::class, 'detail']);
+Route::post('/add_comment/{post}', [DiscussionsController::class, 'add_comment']);
 Route::post('/new_post', ['middleware' => 'App\Http\Middleware\Authenticate', 'uses' => 'App\Http\Controllers\DiscussionsController@store']);
