@@ -74,13 +74,6 @@
             @csrf
             <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 fw-normal">Change Password</h1>
-{{--            <div class="form-floating">--}}
-{{--                <input type="email" class="form-control @error('invalid') is-invalid @enderror" id="floatingInput" placeholder="Email" name="email">--}}
-{{--                <label for="floatingInput">Email</label>--}}
-{{--                @error('invalid')--}}
-{{--                <div class="invalid-feedback">{{ $message }}</div>--}}
-{{--                @enderror--}}
-{{--            </div>--}}
             <div class="form-floating">
                 <input type="password" class="form-control @error('invalid') is-invalid @enderror" id="floatingInput" placeholder="Password" name="oldpassword">
                 <label for="floatingInput">Old Password</label>

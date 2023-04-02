@@ -95,7 +95,7 @@
             Nulla facilisis placerat varius. Etiam sed maximus ipsum. Sed id diam lacus. Nullam molestie imperdiet quam, quis aliquet est ornare eget. Cras blandit, ante sit amet vestibulum scelerisque, metus nisi rutrum justo, ac iaculis purus dolor convallis risus. Suspendisse potenti. Morbi maximus lacus et placerat viverra.
         </p>
         <hr>
-        <div class="comment">
+                <div class="comment">
             <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo"> 0 Comments </a>
         </div>
         <div class="upvote">
