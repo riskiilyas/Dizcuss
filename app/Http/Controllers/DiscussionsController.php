@@ -6,6 +6,7 @@ use App\Http\Middleware\Authenticate;
 use App\Models\Discussion;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class DiscussionsController extends Controller
 {
@@ -28,8 +29,13 @@ class DiscussionsController extends Controller
         $discussion->user_id = auth()->user()->id;
         $discussion->title = $validatedData['title'];
         $discussion->description = $validatedData['description'];
-
-        $discussion->save();
+        
+        if($discussion->save()){
+            return redirect()->route('home')->with('success');
+        }
+        else{
+            return redirect()->route('create_post')->with('failure');
+        }
 
     }
 }
