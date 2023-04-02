@@ -37,6 +37,16 @@
 <body class="text-center">
 
     <main class="form-signin">
+        @if(session('success'))
+            <div class="alert alert-success" role="alert">
+                Account Successfully created! Login now.
+            </div>
+        @endif
+            @if(session('failed'))
+                <div class="alert alert-danger" role="alert">
+                    Wrong Password or Email!
+                </div>
+            @endif
         <form method="POST" action="/login">
             @csrf
             <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
