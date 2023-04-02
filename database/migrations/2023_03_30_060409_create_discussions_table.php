@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
-            $table->string('title')->default('');
-            $table->text('description')->default('');
+            $table->string('title');
+            $table->text('description');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });

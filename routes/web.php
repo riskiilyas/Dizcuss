@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/register', [RegisterController::class, 'register']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/login', [SessionController::class, 'login'])->name('login');
@@ -32,4 +32,5 @@ Route::post('/change_password', [ChangePasswordController::class, 'change_passwo
 Route::get('/change_password', [ChangePasswordController::class, 'index']);
 Route::get('/users', [UsersController::class, 'index']);
 Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/new_post', [DiscussionsController::class, 'create']);
+Route::get('/new_post', [DiscussionsController::class, 'create'])->name('create_post');
+Route::post('/new_post', ['middleware' => 'App\Http\Middleware\Authenticate', 'uses' => 'App\Http\Controllers\DiscussionsController@store']);

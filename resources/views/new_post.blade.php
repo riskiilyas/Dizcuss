@@ -85,9 +85,10 @@
                 Create a New Discussion
             </h1>
             <div class="create-discussion">
-                <form action="input" method="post" class="form">
-                    <textarea name="comment-input" cols="50" rows="1" class="discussion-ttl mb-3" placeholder="Title" style="resize:none;"></textarea>
-                    <textarea name="comment-input" cols="100" rows="10" class="discussion-details mb-3" placeholder="Discussion" style="resize:none;"></textarea>
+                <form action="/new_post" method="post" class="form">
+                    @csrf
+                    <textarea name="comment-input" cols="50" rows="1" class="discussion-ttl mb-3" placeholder="Title" style="resize:none;" name="title"></textarea>
+                    <textarea name="comment-input" cols="100" rows="10" class="discussion-details mb-3" placeholder="Discussion" style="resize:none;" name="description"></textarea>
                     <button type="submit" class="post-button">Post New Discussion</button>
                 </form>
 
