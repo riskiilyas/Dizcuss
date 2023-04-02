@@ -1,24 +1,26 @@
 html,
 body{
-    height: 100%
+    height: fit-content;
+    width: fit-content;
+    max-width: 100%;
 }
 
 body{
     display: flex;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 10px;
     padding-bottom: 40px;
     background-color: rgba(59, 108, 139, 0.5);
+    background-image: url(../images/isometric-cube-pattern.png);
 }
+
 .discussion-title{
     position: relative;
     top: 0;
     left: 12rem;
-    right: 12rem;
     align-items: center;
     justify-content: center;
     resize: none;
-    margin-top: 100px;
 }
 
 .discussion-title .discussion-title-content{
@@ -106,14 +108,17 @@ body{
     position: absolute;
     margin-bottom: 10px;
     width: 1080px;
-    height: 100rem;
+    height: fit-content;
+    margin-bottom: 10px;
+    left: 5px;
+    padding-bottom: 10px;
 }
 
 .comment-section .form textarea{
     width: 980px;
     height: 4rem;
     border-radius: 20px;
-    border: 2px solid rgba(53, 149, 208, 1);
+    border: 2px solid rgb(161, 187, 204);
     padding: 10px;
     margin: 10px;
     margin-bottom: 10px;
@@ -124,7 +129,6 @@ body{
     background-color: rgba(53, 149, 208, 1);
     padding: 10px;
     margin: 10px;
-    margin-bottom: 10px;
     outline: none;
     border: none;
     color: whitesmoke;
@@ -139,4 +143,28 @@ body{
 
 .comment-section .form textarea ::after{
    border-bottom: 2px solid rgba(53, 149, 208, 1);
+}
+
+.comment-display{
+    display: block;
+    background-color: whitesmoke;
+    position: relative;
+    max-width: 1080px;
+    height: fit-content;
+    border-bottom: 1px solid rgba(59, 108, 139, 0.5);
+    padding: 3%;
+    margin: 2%;
+    margin-top: 10px;
+}
+
+.comment-display-2{
+    display: block;
+    background-color: whitesmoke;
+    position: relative;
+    max-width: 1080px;
+    height: fit-content;
+    border-bottom: 1px solid rgba(53, 149, 208, 1);
+    padding: 3%;
+    margin: 2%;
+    
 }

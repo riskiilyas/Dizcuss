@@ -35,6 +35,43 @@
 </head>
 <body class="discussion">
     <section class ="discussion-title">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="../images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top"
+                    style="margin-right: 1rem">
+                    Dizcuzz
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Users</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">View Profile</a></li>
+                                <li><a class="dropdown-item" href="/change_password">Change Password</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
         <main class="discussion-title-content">
                 <div class="author-information">
                     <img class="profile-logo" src="../images/profile.png" alt="profile-logo">/**author-username**/
@@ -71,10 +108,22 @@ Nulla facilisis placerat varius. Etiam sed maximus ipsum. Sed id diam lacus. Nul
                 <textarea name="comment-input" cols="30" rows="10" class="comment-input" placeholder="Comment"></textarea>
                 <button type="submit" class="post-button">Post Comment</button>
             </form>
-    
-        <div>
-    </section>
-    <br>
-    
-    <br>    
+            <div class="comment-display">
+                <div class="author-information">
+                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">/**author-username**/
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis suscipit orci. Nunc mollis, ante ac pretium viverra, ex nunc fringilla lectus, ac ullamcorper odio dui in felis. Phasellus felis metus, vestibulum nec lorem eu, placerat lobortis justo. Ut dapibus massa velit, molestie tincidunt justo luctus vitae. In a sapien enim. Nam ex est, gravida a ante nec, hendrerit tempor massa. In bibendum sapien sed justo pellentesque viverra. Cras posuere lobortis maximus. Proin fringilla id sapien vitae placerat.
+                </p>
+            </div>
+            <div class="comment-display-2">
+                <div class="author-information">
+                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">/**author-username**/
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis suscipit orci. Nunc mollis, ante ac pretium viverra, ex nunc fringilla lectus, ac ullamcorper odio dui in felis. Phasellus felis metus, vestibulum nec lorem eu, placerat lobortis justo. Ut dapibus massa velit, molestie tincidunt justo luctus vitae. In a sapien enim. Nam ex est, gravida a ante nec, hendrerit tempor massa. In bibendum sapien sed justo pellentesque viverra. Cras posuere lobortis maximus. Proin fringilla id sapien vitae placerat.
+                </p>
+            </div>
+        </div>
+    </section>   
 </body>
