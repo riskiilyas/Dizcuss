@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function index() {
         if (Auth::check()) {
-            return view('users');
+            return view('profile');
         }
         return redirect()->action([SessionController::class, 'login']);
     }
