@@ -1,0 +1,57 @@
+html,
+
+body{
+    padding-bottom: 40px;
+    background-color: rgba(59, 108, 139, 0.5);
+    background-image: url(../images/isometric-cube-pattern.png);
+}
+
+
+.follow-button{
+    margin: 10px;
+    padding: 7px;
+    width: 96px;
+    margin-top: -10px;
+    border: 2px solid rgb(161, 187, 204);
+    border-radius: 10px;
+}
+
+.follow-button:hover{
+    color: rgb(161, 187, 204);
+}
+
+.wrapper{
+    display: block;
+    padding: 10px;
+    border: 2px solid rgba(53, 149, 208, 1);
+    background-color: whitesmoke;
+    font-size: 1rem;
+    border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    margin-bottom: 10px;
+    width: 1080px;
+    height: fit-content;
+    margin-top: 10px;
+    margin-left: 10px;
+    left: 5px;
+    padding-bottom: 10px;
+}
+
+.user-information{
+    display: block;
+    background-color: whitesmoke;
+    position: relative;
+    max-width: 1080px;
+    height: fit-content;
+    border-bottom: 1px solid rgba(59, 108, 139, 0.5);
+    padding: 3%;
+    margin: 2%;
+    margin-top: 10px;
+}
+.profile-logo{
+    height: 3%;
+    width: 3%;
+    margin-right: 1rem;
+    opacity: 0.5;
+    resize: none;
+}
