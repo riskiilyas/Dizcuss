@@ -70,8 +70,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" method="get" action="/search/user">
+                        <input name="username" class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Search</button>
                     </form>
                 </div>

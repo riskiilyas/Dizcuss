@@ -26,7 +26,7 @@ class SearchController extends Controller
         $search = $request->input('username');
         $self = Auth::user()->username;
         $users = User::where('username','like', "%{$search}%")
-            ->orWhereNot('username','=', $self)
+            ->WhereNot('username','=', $self)
             ->get();
         
         return view('search.user')->with('users', $users);

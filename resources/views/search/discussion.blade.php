@@ -42,7 +42,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
+                    <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,7 +84,7 @@
         <main class="discussion-title-content">
             <div class="author-information">
                 <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                {{App\Models\User::find($d->user_id)->username}}
+                {{$d->user->username}}
             </div>
             <a href="/discussion/{{$d->id}}">
                 <h1>
@@ -97,7 +97,7 @@
             <hr>
             <div class="comment">
                 <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
-                    {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
+                    {{count($d->comments)}} Comments
                 </a>
             </div>
             <div class="upvote">
@@ -111,9 +111,9 @@
             </div>
         </main>
         @empty
-            <main class="discussion-title-content">
-                <h1 style="text-align: center;">Discussion not found</h1>
-            </main>
+        <main class="discussion-title-content">
+            <h1 style="text-align: center;">Discussion not found</h1>
+        </main>
         @endforelse
     </section>
     <br>
