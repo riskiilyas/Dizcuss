@@ -80,7 +80,7 @@
                 </div>
             </div>
         </nav>
-        @foreach ($discussions as $d)
+        @forelse ($discussions as $d)
         <main class="discussion-title-content">
             <div class="author-information">
                 <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
@@ -110,7 +110,11 @@
                 <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
             </div>
         </main>
-        @endforeach
+        @empty
+            <main class="discussion-title-content">
+                <h1 style="text-align: center;">Discussion not found</h1>
+            </main>
+        @endforelse
     </section>
     <br>
 
