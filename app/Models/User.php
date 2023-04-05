@@ -45,11 +45,11 @@ class User extends Authenticatable
     ];
 
     public function discussions():HasMany {
-        return $this.hasMany(Discussion::class);
+        return $this->hasMany(Discussion::class);
     }
 
     public function comments(): HasMany
     {
-        return $this.hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 }

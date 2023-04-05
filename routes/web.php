@@ -39,3 +39,4 @@ Route::post('/add_comment/{post}', [DiscussionsController::class, 'add_comment']
 Route::post('/follow/{id}', [ProfileController::class, 'follow']);
 Route::post('/new_post', ['middleware' => 'App\Http\Middleware\Authenticate', 'uses' => 'App\Http\Controllers\DiscussionsController@store']);
 Route::get('/search/discussion', ['middleware' => 'App\Http\Middleware\Authenticate', 'uses' => 'App\Http\Controllers\SearchController@searchDiscussions']);
+Route::get('/search/user', ['middleware' => 'App\Http\Middleware\Authenticate', 'uses' => 'App\Http\Controllers\SearchController@searchUsers']);

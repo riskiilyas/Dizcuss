@@ -74,11 +74,11 @@
                 </form>
             </div>
         </nav>
-        @foreach (App\Models\Discussion::all() as $d)
+        @foreach ($discussion as $d)
             <main class="discussion-title-content">
                 <div class="author-information">
                     <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                    {{App\Models\User::find($d->user_id)->username}}
+                    {{$d->user->username}}
                 </div>
                 <a href="/discussion/{{$d->id}}">
                     <h1>
@@ -91,7 +91,7 @@
                 <hr>
                 <div class="comment">
                     <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
-                        {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
+                        {{count($d->comments)}} Comments
                     </a>
                 </div>
                 <div class="upvote">
