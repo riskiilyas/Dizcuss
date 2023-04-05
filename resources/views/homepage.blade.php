@@ -101,7 +101,7 @@
                     </a>
                 </div>
                 <div class="upvote">
-                    <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
+                    <a href="\change_password"> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
                 </div>
                 <div class="downvote">
                     <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>

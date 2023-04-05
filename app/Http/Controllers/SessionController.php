@@ -29,7 +29,7 @@ class SessionController extends Controller
 
     public function login_action(Request $request) {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
