@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Dizcuzz · Home</title>
+    <title>Dizcuzz · Search Discussions</title>
     <link rel="icon" type="image/x-icon" href="/images/icon.jpg">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">

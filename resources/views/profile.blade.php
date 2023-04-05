@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@php
+$user = null;
+if(isset($id)) {
+$user = App\Models\User::find($id);
+} else {
+$user = auth()->user();
+}
+@endphp
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Dizcuzz · *Profile-name</title>
+    <title>Dizcuzz · {{$user->fullname}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -34,14 +43,6 @@
     <script src="/bootstrap/js/bootstrap.js"></script>
 
 </head>
-@php
-$user = null;
-if(isset($id)) {
-$user = App\Models\User::find($id);
-} else {
-$user = auth()->user();
-}
-@endphp
 
 <body>
     <section class="profile">
