@@ -49,6 +49,15 @@ class DiscussionsController extends Controller
         return redirect()->action([SessionController::class, 'login']);
     }
 
+    public function delete_post(Request $request, $id) {
+        if (Auth::check()) {
+            Comment::where('discussion_id', $id)->delete();
+            Discussion::find($id)->delete();
+            return redirect()->action([HomeController::class, 'index']);
+        }
+        return redirect()->action([SessionController::class, 'login']);
+    }
+
     public function upvote($id) {
         if (Auth::check()) {
             $vote = new Vote();

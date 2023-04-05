@@ -107,6 +107,14 @@
                 <a href="/fav/{{$discuss->id}}"> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo">
                     {{count(App\Models\Favorite::where('discussion_id', $d_id)->get())}} Favorites </a>
              </div>
+            @if($discuss->user_id===\Illuminate\Support\Facades\Auth::user()->id)
+                <form action="/delete/{{$d_id}}" method="POST">
+                    @csrf
+                    <button type="submit" class="follow-button">
+                        Delete Post
+                    </button>
+                </form>
+            @endif
         </main>
         <div class="comment-section">
             <form action="/add_comment/{{$d_id}}" method="POST" class="form">
