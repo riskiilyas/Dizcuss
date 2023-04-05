@@ -1,9 +1,4 @@
 html,
-body{
-    height: fit-content;
-    width: fit-content;
-    max-width: 100%;
-}
 
 body{
     display: flex;
@@ -12,6 +7,9 @@ body{
     padding-bottom: 40px;
     background-color: rgba(59, 108, 139, 0.5);
     background-image: url(../images/isometric-cube-pattern.png);
+    height: fit-content;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .discussion-title{

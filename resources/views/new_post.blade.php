@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Dizcuzz · Home</title>
+    <title>Dizcuzz · New Post</title>
     <link rel="icon" type="image/x-icon" href="/images/icon.jpg">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
@@ -41,7 +41,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
@@ -98,6 +98,5 @@
         </main>
     </section>
     <br>
-
     <br>
 </body>
