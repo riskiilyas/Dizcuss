@@ -73,10 +73,6 @@
                             <a class="nav-link" href="/new_post">New Post</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -89,6 +85,7 @@
                     @csrf
                     <textarea name="title" cols="50" rows="1" class="discussion-ttl mb-3" placeholder="Title" style="resize:none;"></textarea>
                     <textarea name="description" cols="100" rows="10" class="discussion-details mb-3" placeholder="Discussion" style="resize:none;"></textarea>
+                    <br>
                     <button type="submit" class="post-button">Post New Discussion</button>
                 </form>
 
@@ -96,9 +93,10 @@
                     <hr>
                     <br>
                     <br>
+                </div>
+            </div>
         </main>
     </section>
     <br>
-
     <br>
 </body>

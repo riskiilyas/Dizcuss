@@ -39,8 +39,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top"
-                     style="margin-right: 1rem">
+                <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                 Dizcuzz
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +48,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/users">Users</a>
@@ -59,13 +58,22 @@
                             Profile
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">View Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile">View Profile</a></li>
                             <li><a class="dropdown-item" href="/change_password">Change Password</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/new_post">New Post</a>
+                    </li>
                 </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -74,13 +82,6 @@
             @csrf
             <img class="mb-4" src="/images/logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 fw-normal">Change Password</h1>
-{{--            <div class="form-floating">--}}
-{{--                <input type="email" class="form-control @error('invalid') is-invalid @enderror" id="floatingInput" placeholder="Email" name="email">--}}
-{{--                <label for="floatingInput">Email</label>--}}
-{{--                @error('invalid')--}}
-{{--                <div class="invalid-feedback">{{ $message }}</div>--}}
-{{--                @enderror--}}
-{{--            </div>--}}
             <div class="form-floating">
                 <input type="password" class="form-control @error('invalid') is-invalid @enderror" id="floatingInput" placeholder="Password" name="oldpassword">
                 <label for="floatingInput">Old Password</label>

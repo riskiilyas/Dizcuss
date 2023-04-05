@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ChangePasswordController extends Controller
 {
@@ -20,7 +21,9 @@ class ChangePasswordController extends Controller
             if(strcmp($request['newpassword'],$request['cnewpassword'])==0) {
                 $encr = bcrypt($request['newpassword']);
                 User::find(Auth::user()->id)->update(['password' => $encr]);
-                return redirect()->action([SessionController::class, 'logout'])->withSuccess('Password Changed! Please Login');
+                Session::flush();
+                Auth::logout();
+                return redirect()->action([SessionController::class, 'login'])->withSuccess('Password Changed! Please Login');
             } else {
                 return back()->withErrors([
                     'mismatch' => 'The New Passwords are mismatch!',

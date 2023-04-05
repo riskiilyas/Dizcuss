@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Dizcuzz · *Profile-name</title>
+    <title>Dizcuzz · Home</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.jpg">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -28,21 +30,15 @@
             }
         }
     </style>
-
-<link href="/styles/profile.css" rel="stylesheet">
     <script src="/bootstrap/js/bootstrap.js"></script>
-
+    <!-- Custom styles for this template -->
+    <link href="/styles/home.css" rel="stylesheet">
 </head>
-@php
-    $user = null;
-    if(isset($id)) {
-        $user = App\Models\User::find($id);
-    } else {
-        $user = auth()->user();
-    }
-@endphp
-<body>
-    <section class ="profile">
+
+<body class="discussion">
+
+    <section class="discussion-title">
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -77,68 +73,50 @@
                             <a class="nav-link" href="/new_post">New Post</a>
                         </li>
                     </ul>
+                    <form class="d-flex" method="get" action="/search/discussion">
+                        <input name="title" class="form-control me-2" type="search" placeholder="Search discussions" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>
-
-        <div class ="wrapper">
-        <div class="profile-information">
-            <img class="profile-logo1" src="../images/profile.png" alt="profile-logo">
-            <div class="profile-name">
-                <h1>
-                    {{$user->fullname}}
-                </h1>
-                <span>
-                    @ {{$user->username}}
-                </span>
-                @if (isset($id))
-                    <form action="/follow/{{$id}}" method="POST">
-                        @csrf
-                        <button type="submit" class="follow-button">
-                            Follow
-                        </button>
-                    </form>
-                @endif
-                <br>
-                {{count(App\Models\Following::where('user_id', $id)->get())}} Following · {{count(App\Models\Following::where('user_following_id', $id)->get())}} Followers
+        @forelse ($discussions as $d)
+        <main class="discussion-title-content">
+            <div class="author-information">
+                <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
+                {{App\Models\User::find($d->user_id)->username}}
             </div>
-        </div>
-
-        <div class="favorite-list">
-            Favorites
-        </div>
-        @foreach(App\Models\Favorite::where('user_id', $user->id)->get() as $fav)
-                <main class="discussion-title-content">
-                    <div class="author-information">
-                        <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                        {{App\Models\User::find(App\Models\Discussion::find($fav->discussion_id))->username}}
-                    </div>
-                    <a href="/discussion/{{$fav->discussion_id}}">
-                        <h1>
-                            {{App\Models\Discussion::find($fav->discussion_id)->title}}
-                        </h1>
-                    </a>
-                    <p>
-                        {{App\Models\Discussion::find($fav->discussion_id)->description}}
-                    </p>
-                    <hr>
-                    <div class="comment">
-                        <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
-                            {{count(App\Models\Comment::where('discussion_id', $fav->discussion_id)->get())}} Comments
-                        </a>
-                    </div>
-                    <div class="upvote">
-                        <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
-                    </div>
-                    <div class="downvote">
-                        <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
-                    </div>
-                    <div class="favorite">
-                        <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
-                    </div>
-                </main>
-        @endforeach
-    </div>
+            <a href="/discussion/{{$d->id}}">
+                <h1>
+                    {{$d->title}}
+                </h1>
+            </a>
+            <p>
+                {{$d->description}}
+            </p>
+            <hr>
+            <div class="comment">
+                <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
+                    {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
+                </a>
+            </div>
+            <div class="upvote">
+                <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
+            </div>
+            <div class="downvote">
+                <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
+            </div>
+            <div class="favorite">
+                <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
+            </div>
+        </main>
+        @empty
+            <main class="discussion-title-content">
+                <h1 style="text-align: center;">Discussion not found</h1>
+            </main>
+        @endforelse
     </section>
+    <br>
+
+    <br>
 </body>
-</html>
