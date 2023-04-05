@@ -71,17 +71,17 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex" method="get" action="/search/discussion">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" action="/search/discussion">
+                    <input name="title" class="form-control me-2" type="search" placeholder="Search Discussions" aria-label="Search">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
             </div>
         </nav>
-        @foreach (App\Models\Discussion::all() as $d)
+        @foreach ($discussion as $d)
             <main class="discussion-title-content">
                 <div class="author-information">
                     <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                    {{App\Models\User::find($d->user_id)->username}}
+                    {{$d->user->username}}
                 </div>
                 <a href="/discussion/{{$d->id}}">
                     <h1>
@@ -94,7 +94,7 @@
                 <hr>
                 <div class="comment">
                     <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
-                        {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
+                        {{count($d->comments)}} Comments
                     </a>
                 </div>
                 <div class="upvote">

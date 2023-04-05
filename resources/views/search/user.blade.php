@@ -79,14 +79,18 @@
         </nav>
 
         <div class="wrapper">
-            @foreach ($users as $u)
+            @forelse ($users as $u)
             <div class="user-display">
                 <div class="user-information">
                     <img class="profile-logo" src="../images/profile.png" alt="profile-logo">{{$u->username}}
                     <button type="submit" class="follow-button">View</button>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <main class="discussion-title-content">
+                <h1 style="text-align: center;">User not found</h1>
+            </main>
+            @endforelse
         </div>
     </section>
     <br>
