@@ -80,39 +80,43 @@
                 </div>
             </div>
         </nav>
-        @foreach (App\Models\Discussion::all() as $d)
-            <main class="discussion-title-content">
-                <div class="author-information">
-                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                    {{App\Models\User::find($d->user_id)->username}}
-                </div>
-                <a href="/discussion/{{$d->id}}">
-                    <h1>
-                        {{$d->title}}
-                    </h1>
+        @forelse ($discussions as $d)
+        <main class="discussion-title-content">
+            <div class="author-information">
+                <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
+                {{App\Models\User::find($d->user_id)->username}}
+            </div>
+            <a href="/discussion/{{$d->id}}">
+                <h1>
+                    {{$d->title}}
+                </h1>
+            </a>
+            <p>
+                {{$d->description}}
+            </p>
+            <hr>
+            <div class="comment">
+                <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
+                    {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
                 </a>
-                <p>
-                    {{$d->description}}
-                </p>
-                <hr>
-                <div class="comment">
-                    <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
-                        {{count(App\Models\Comment::where('discussion_id', $d->id)->get())}} Comments
-                    </a>
-                </div>
-                <div class="upvote">
-                    <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
-                </div>
-                <div class="downvote">
-                    <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
-                </div>
-                <div class="favorite">
-                    <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
-                </div>
+            </div>
+            <div class="upvote">
+                <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
+            </div>
+            <div class="downvote">
+                <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
+            </div>
+            <div class="favorite">
+                <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
+            </div>
+        </main>
+        @empty
+            <main class="discussion-title-content">
+                <h1 style="text-align: center;">Discussion not found</h1>
             </main>
-        @endforeach
-</section>
-<br>
+        @endforelse
+    </section>
+    <br>
 
-<br>
+    <br>
 </body>

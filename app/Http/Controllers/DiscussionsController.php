@@ -38,6 +38,9 @@ class DiscussionsController extends Controller
             $comment->comment = $request['comment'];
             $comment->discussion_id = $post;
             $comment->user_id = Auth::user()->id;
+            if($comment->comment === null){
+                return back()->with('failure');
+            }
             $comment->save();
             return back();
         }
