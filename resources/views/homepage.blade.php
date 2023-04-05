@@ -56,6 +56,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/users">Users</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/new_post">New Post</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Profile
@@ -95,13 +98,16 @@
                     </a>
                 </div>
                 <div class="upvote">
-                    <a href="\change_password"> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
+                  <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo">
+                    {{count(App\Models\Vote::where('discussion_id', $d->id)->where('is_upvote', 1)->get())}} Upvotes
                 </div>
                 <div class="downvote">
-                    <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
+                 <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo">
+                    {{count(App\Models\Vote::where('discussion_id', $d->id)->where('is_upvote', 0)->get())}} Downvotes
                 </div>
                 <div class="favorite">
-                    <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
+                    <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo">
+                    {{count(App\Models\Favorite::where('discussion_id', $d->id)->get())}} Favorites
                 </div>
             </main>
         @endforeach

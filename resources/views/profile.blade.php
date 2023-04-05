@@ -46,7 +46,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
+                    <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,12 +95,15 @@
                     <form action="/follow/{{$id}}" method="POST">
                         @csrf
                         <button type="submit" class="follow-button">
-                            Follow
+                            @if(count(App\Models\Following::where('user_following_id', $user->id)->where('user_id', $user->id)->get())>0)
+                                Follow
+                            @else
+                                Followed
+                            @endif
                         </button>
                     </form>
                 @endif
-                <br>
-                {{count(App\Models\Following::where('user_id', $id)->get())}} Following · {{count(App\Models\Following::where('user_following_id', $id)->get())}} Followers
+                {{count(App\Models\Following::where('user_id', $user->id)->get())}} Following · {{count(App\Models\Following::where('user_following_id', $user->id)->get())}} Followers
             </div>
         </div>
 
@@ -111,7 +114,7 @@
                 <main class="discussion-title-content">
                     <div class="author-information">
                         <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                        {{App\Models\User::find(App\Models\Discussion::find($fav->discussion_id))->username}}
+                        {{App\Models\User::find(App\Models\Discussion::find($fav->discussion_id)->user_id)->username}}
                     </div>
                     <a href="/discussion/{{$fav->discussion_id}}">
                         <h1>
@@ -122,20 +125,6 @@
                         {{App\Models\Discussion::find($fav->discussion_id)->description}}
                     </p>
                     <hr>
-                    <div class="comment">
-                        <a><img class="comment-logo" src="../images/comment.png" alt="comment-logo">
-                            {{count(App\Models\Comment::where('discussion_id', $fav->discussion_id)->get())}} Comments
-                        </a>
-                    </div>
-                    <div class="upvote">
-                        <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
-                    </div>
-                    <div class="downvote">
-                        <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
-                    </div>
-                    <div class="favorite">
-                        <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
-                    </div>
                 </main>
         @endforeach
     </div>

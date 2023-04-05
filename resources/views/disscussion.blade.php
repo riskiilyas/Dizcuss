@@ -45,7 +45,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
+                    <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,13 +96,16 @@
                     {{count(App\Models\Comment::where('discussion_id', $d_id)->get())}} Comments </a>
             </div>
             <div class="upvote">
-               <a> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo"> 0 Upvotes </a>
+                <a href="/upvote/{{$discuss->id}}"> <img class="upvote-logo" src="../images/upvote.png" alt="upvote-logo">
+                    {{count(App\Models\Vote::where('discussion_id', $d_id)->where('is_upvote', 1)->get())}} Upvotes </a>
             </div>
             <div class="downvote">
-                <a> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo"> 0 Downvotes </a>
-             </div>
+                <a href="/downvote/{{$discuss->id}}"> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo">
+                    {{count(App\Models\Vote::where('discussion_id', $d_id)->where('is_upvote', 0)->get())}} Downvotes </a>
+            </div>
              <div class="favorite">
-                <a> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo"> 0 Favorites </a>
+                <a href="/fav/{{$discuss->id}}"> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo">
+                    {{count(App\Models\Favorite::where('discussion_id', $d_id)->get())}} Favorites </a>
              </div>
         </main>
         <div class="comment-section">
