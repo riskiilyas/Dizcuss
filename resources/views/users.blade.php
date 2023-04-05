@@ -41,7 +41,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
@@ -61,13 +61,16 @@
                                 Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">View Profile</a></li>
+                                <li><a class="dropdown-item" href="/profile">View Profile</a></li>
                                 <li><a class="dropdown-item" href="/change_password">Change Password</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/new_post">New Post</a>
                         </li>
                     </ul>
                     <form class="d-flex" method="get" action="/search/user">
@@ -80,12 +83,15 @@
 
         <div class="wrapper">
             @foreach ($users as $u)
-            <div class="user-display">
-                <div class="user-information">
-                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">{{$u->username}}
-                    <button type="submit" class="follow-button">View</button>
+            <form action="/user/{{$u->id}}">
+                <div class="user-display">
+                    <div class="user-information">
+                        <img class="profile-logo" src="../images/profile.png" alt="profile-logo">{{$u->username}}
+
+                        <button type="submit" class="follow-button">View</button>
+                    </div>
                 </div>
-            </div>
+            </form>
             @endforeach
         </div>
     </section>

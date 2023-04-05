@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,23 +30,24 @@
         }
     </style>
 
-<link href="/styles/profile.css" rel="stylesheet">
+    <link href="/styles/profile.css" rel="stylesheet">
     <script src="/bootstrap/js/bootstrap.js"></script>
 
 </head>
 @php
-    $user = null;
-    if(isset($id)) {
-        $user = App\Models\User::find($id);
-    } else {
-        $user = auth()->user();
-    }
+$user = null;
+if(isset($id)) {
+$user = App\Models\User::find($id);
+} else {
+$user = auth()->user();
+}
 @endphp
+
 <body>
-    <section class ="profile">
+    <section class="profile">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
@@ -77,57 +79,62 @@
                             <a class="nav-link" href="/new_post">New Post</a>
                         </li>
                     </ul>
+                    <form class="d-flex" method="get" action="/search/user">
+                        <input name="username" class="form-control me-2" type="search" placeholder="Search Users" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>
 
-        <div class ="wrapper">
-        <div class="profile-information">
-            <img class="profile-logo1" src="../images/profile.png" alt="profile-logo">
-            <div class="profile-name">
-                <h1>
-                    {{$user->fullname}}
-                </h1>
-                <span>
-                    @ {{$user->username}}
-                </span>
-                @if (isset($id))
+        <div class="wrapper">
+            <div class="profile-information">
+                <img class="profile-logo1" src="../images/profile.png" alt="profile-logo">
+                <div class="profile-name">
+                    <h1>
+                        {{$user->fullname}}
+                    </h1>
+                    <span>
+                        @ {{$user->username}}
+                    </span>
+                    @if (isset($id))
                     <form action="/follow/{{$id}}" method="POST">
                         @csrf
                         <button type="submit" class="follow-button">
                             @if(count(App\Models\Following::where('user_following_id', $user->id)->where('user_id', $user->id)->get())>0)
-                                Follow
+                            Follow
                             @else
-                                Followed
+                            Followed
                             @endif
                         </button>
                     </form>
-                @endif
-                {{count(App\Models\Following::where('user_id', $user->id)->get())}} Following · {{count(App\Models\Following::where('user_following_id', $user->id)->get())}} Followers
+                    @endif
+                    {{count(App\Models\Following::where('user_id', $user->id)->get())}} Following · {{count(App\Models\Following::where('user_following_id', $user->id)->get())}} Followers
+                </div>
             </div>
-        </div>
 
-        <div class="favorite-list">
-            Favorites
+            <div class="favorite-list">
+                Favorites
+            </div>
+            @foreach(App\Models\Favorite::where('user_id', $user->id)->get() as $fav)
+            <main class="discussion-title-content">
+                <div class="author-information">
+                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
+                    {{App\Models\User::find(App\Models\Discussion::find($fav->discussion_id)->user_id)->username}}
+                </div>
+                <a href="/discussion/{{$fav->discussion_id}}">
+                    <h1>
+                        {{App\Models\Discussion::find($fav->discussion_id)->title}}
+                    </h1>
+                </a>
+                <p>
+                    {{App\Models\Discussion::find($fav->discussion_id)->description}}
+                </p>
+                <hr>
+            </main>
+            @endforeach
         </div>
-        @foreach(App\Models\Favorite::where('user_id', $user->id)->get() as $fav)
-                <main class="discussion-title-content">
-                    <div class="author-information">
-                        <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                        {{App\Models\User::find(App\Models\Discussion::find($fav->discussion_id)->user_id)->username}}
-                    </div>
-                    <a href="/discussion/{{$fav->discussion_id}}">
-                        <h1>
-                            {{App\Models\Discussion::find($fav->discussion_id)->title}}
-                        </h1>
-                    </a>
-                    <p>
-                        {{App\Models\Discussion::find($fav->discussion_id)->description}}
-                    </p>
-                    <hr>
-                </main>
-        @endforeach
-    </div>
     </section>
 </body>
+
 </html>

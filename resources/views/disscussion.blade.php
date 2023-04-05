@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,15 +37,16 @@
 
 </head>
 @php
-    $discuss = null;
-     if (isset($d_id)) {
-         $discuss = App\Models\Discussion::find($d_id);
-     }@endphp
+$discuss = null;
+if (isset($d_id)) {
+$discuss = App\Models\Discussion::find($d_id);
+}@endphp
+
 <body class="discussion">
-    <section class ="discussion-title">
+    <section class="discussion-title">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/images/icon.png" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
                     Dizcuzz
                 </a>
@@ -76,15 +78,19 @@
                             <a class="nav-link" href="/new_post">New Post</a>
                         </li>
                     </ul>
+                    <form class="d-flex" action="/search/discussion">
+                        <input name="title" class="form-control me-2" type="search" placeholder="Search Discussions" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>
         <main class="discussion-title-content">
-                <div class="author-information">
-                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                    <a href="/user/{{$discuss->user_id}}">
-                        {{App\Models\User::find($discuss->user_id)->username}}</a>
-                </div>
+            <div class="author-information">
+                <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
+                <a href="/user/{{$discuss->user_id}}">
+                    {{App\Models\User::find($discuss->user_id)->username}}</a>
+            </div>
             <h1>
                 {{$discuss->title}}
             </h1>
@@ -103,35 +109,35 @@
                 <a href="/downvote/{{$discuss->id}}"> <img class="downvote-logo" src="../images/downvote.png" alt="downvote-logo">
                     {{count(App\Models\Vote::where('discussion_id', $d_id)->where('is_upvote', 0)->get())}} Downvotes </a>
             </div>
-             <div class="favorite">
+            <div class="favorite">
                 <a href="/fav/{{$discuss->id}}"> <img class="favorite-logo" src="../images/bookmark.png" alt="favorite-logo">
                     {{count(App\Models\Favorite::where('discussion_id', $d_id)->get())}} Favorites </a>
-             </div>
+            </div>
             @if($discuss->user_id===\Illuminate\Support\Facades\Auth::user()->id)
-                <form action="/delete/{{$d_id}}" method="POST">
-                    @csrf
-                    <button type="submit" class="follow-button">
-                        Delete Post
-                    </button>
-                </form>
+            <form action="/delete/{{$d_id}}" method="POST">
+                @csrf
+                <button type="submit" class="follow-button">
+                    Delete Post
+                </button>
+            </form>
             @endif
         </main>
         <div class="comment-section">
             <form action="/add_comment/{{$d_id}}" method="POST" class="form">
                 @csrf
-                <textarea name="comment" cols="30" rows="10" class="comment-input" placeholder="Comment"></textarea>
-                <button type="submit" class="post-button">Post Comment</button>
+                <textarea name="comment" cols="30" rows="10" class="comment-input" placeholder="Comment" style="resize:none;"></textarea>
+                <button type=" submit" class="post-button">Post Comment</button>
             </form>
             @foreach(App\Models\Comment::where('discussion_id', $d_id)->get() as $comment)
-                <div class="comment-display">
-                    <div class="author-information">
-                        <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
-                        {{App\Models\User::find($comment->user_id)->username}}
-                    </div>
-                    <p>
-                        {{$comment->comment}}
-                    </p>
+            <div class="comment-display">
+                <div class="author-information">
+                    <img class="profile-logo" src="../images/profile.png" alt="profile-logo">
+                    {{App\Models\User::find($comment->user_id)->username}}
                 </div>
+                <p>
+                    {{$comment->comment}}
+                </p>
+            </div>
             @endforeach
         </div>
     </section>
