@@ -17,6 +17,6 @@ class SearchController extends Controller
         $search = $request->input('title');
         $discussions = Discussion::where('title','like', "%{$search}%")->get();
         
-        return view('search')->with('discussions', $discussions);
+        return view('search.discussion')->with('discussions', $discussions);
     }
 }

@@ -73,7 +73,7 @@
                             <a class="nav-link" href="/new_post">New Post</a>
                         </li>
                     </ul>
-                    <form class="d-flex" method="get" action="/search">
+                    <form class="d-flex" method="get" action="/search/discussion">
                         <input name="title" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">Search</button>
                     </form>
