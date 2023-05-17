@@ -8,7 +8,8 @@ body {
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #f5f5f5;
+    background-color: rgb(11, 11, 11);
+    color: whitesmoke;
 }
 
 .form-signin {
@@ -20,6 +21,10 @@ body {
 
 .form-signin .checkbox {
     font-weight: 400;
+}
+
+.form-signin .form-floating{
+    color: rgb(11, 11, 11);
 }
 
 .form-signin .form-floating:focus-within {
