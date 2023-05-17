@@ -79,7 +79,7 @@
 
             <p>Already have account? <a href="/login">Sign in</a></p>
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+            <button class="w-100 btn btn-lg btn-dark" type="submit">Sign Up</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2023 Dizcuss</p>
         </form>
     </main>
