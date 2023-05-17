@@ -36,7 +36,7 @@
 </head>
 <body class="text-center">
 <section class="section-contents">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/images/icon.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top" style="margin-right: 1rem">
@@ -72,7 +72,7 @@
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -103,7 +103,7 @@
                 <label for="floatingPassword">Confirm New Password</label>
             </div>
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Change Password</button>
+            <button class="w-100 btn btn-lg btn-danger" type="submit">Change Password</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2023 Dizcuzz</p>
         </form>
     </main>
